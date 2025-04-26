@@ -17,7 +17,7 @@ const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID
 const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN
 const twilioClient = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
-app.use(express.static(path.join(__dirname, '..', 'html')));
+app.use(express.static('../html'));
 // Route for root
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'html', 'index.html'));
