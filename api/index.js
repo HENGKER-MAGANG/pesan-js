@@ -17,13 +17,17 @@ const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID
 const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN
 const twilioClient = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
+app.use(express.static(path.join(__dirname, '..', 'html')));
 // Route for root
 app.get('/', (req, res) => {
-    res.send('API is running. Use POST /api/laporan to send a report.');
+    res.sendFile(path.join(__dirname, '..', 'html', 'index.html'));
+});
+app.get('/api', (req, res) => {
+    res.status(200).send('<h1>Welcome To Pesan Anonim</h1>');
 });
 
 // Endpoint to receive reports
-app.post('/laporan', async (req, res) => {
+app.post('/api/laporan', async (req, res) => {
 
 
     try {
